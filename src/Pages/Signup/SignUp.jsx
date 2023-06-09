@@ -1,12 +1,22 @@
 
+import { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
+import toast, { Toaster } from 'react-hot-toast';
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
+    const {createUser} = useContext(AuthContext);
     const onSubmit = data => {
-        
-        console.log(data);}
+      
+        createUser(data.email, data.password)
+        .then(result => {
+          const loggedUser = result.user;
+            console.log(loggedUser);
+            toast.success('Successfully created an account!')
+         });
+    }
     return (
         <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -67,7 +77,7 @@ const SignUp = () => {
                         <p className="mt-1">Already have an account? <Link to='/login' className="text-blue-400">Login Now</Link> </p>
                     </div>
                 </form>
-               
+                <Toaster/>
             </div>
         </div>
     </div>

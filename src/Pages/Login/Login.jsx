@@ -1,15 +1,31 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { useForm } from "react-hook-form";
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
-
-import { Link } from "react-router-dom";
+import toast, { Toaster } from 'react-hot-toast';
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../Providers/AuthProvider";
 
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
+    const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate()
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
     };
-
+    const { register, handleSubmit, formState: { errors } } = useForm();
+    const onSubmit = (data) => {
+        console.log(data);
+        signIn(data.email, data.password)
+        .then(result => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate('/')
+            toast.success('account loggedIn successfully!')
+            
+        })
+    }
+    console.log(errors);
     
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -20,13 +36,14 @@ const Login = () => {
                     </div>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-                    <form className="card-body">
+                    <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                         <h1 className="text-center mb-3 text-5xl font-bold">Login now!</h1>
                         <div className="form-control">
                             <label className="label">
                                 <span className="label-text">Email</span>
                             </label>
-                            <input type="text" placeholder="email" className="input input-bordered" />
+                            <input {...register("email", { required: true })} type="text" placeholder="email" className="input input-bordered" />
+                            {errors.email && <span className="text-red-500 mt-1">email is required</span>}
                         </div>
                         <div className="form-control">
                             <label className="label">
@@ -34,10 +51,12 @@ const Login = () => {
                             </label>
                             < >
                                 <input
+                                {...register("password", { required: true })}
                                     type={passwordVisible ? 'text' : 'password'}
                                     placeholder="password"
                                     className="input input-bordered mt-2 pr-10"
                                 />
+                                  {errors.password && <span className="text-red-500 mt-1">email is required</span>}
                                 <button
                                     type="button"
                                     className="password-toggle-btn"
@@ -56,7 +75,7 @@ const Login = () => {
                             <p className="mt-1">New to Fluency Express? <Link to='/signup' className="text-blue-400">SignUp Now</Link> </p>
                         </div>
                     </form>
-                   
+                    <Toaster/>
                 </div>
             </div>
         </div>
