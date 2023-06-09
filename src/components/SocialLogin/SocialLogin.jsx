@@ -11,7 +11,7 @@ const SocialLogin = () => {
         googleSignIn()
             .then(result => {
                 const loggedUser = result.user;
-                toast.success('account loggedIn successfully!')
+                toast.success('account logged In successfully!')
                 navigate('/')
                 console.log(loggedUser)
             })

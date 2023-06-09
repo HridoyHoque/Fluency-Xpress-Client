@@ -8,10 +8,10 @@ const Banner = () => {
     return (
         <> <AwesomeSlider>
             <div>
-                <img className='w-screen' src="https://i.ibb.co/0ntZPLz/s1.png" alt="" />
+                <img className='w-screen' src="https://i.ibb.co/Qp4nwJR/3170961.jpg" alt="" />
             </div>
             <div>
-                <img className='w-screen' src="https://i.ibb.co/vswFh5v/brooke-cagle-g1-Kr4-Ozfoac-unsplash.jpg" alt="" />
+                <img className='w-screen' src="https://i.ibb.co/2PwNzvB/group-students-posing-table.jpg" alt="" />
             </div>
         </AwesomeSlider>
         </>

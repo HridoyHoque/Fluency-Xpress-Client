@@ -1,7 +1,7 @@
 
 import { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
@@ -9,12 +9,17 @@ import SocialLogin from "../../components/SocialLogin/SocialLogin";
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {createUser} = useContext(AuthContext);
+    const navigate = useNavigate()
     const onSubmit = data => {
-      
+      if(data.password !== data.confirmPassword){
+        toast.error('Password and confirm password did not match')
+        return;
+      }
         createUser(data.email, data.password)
         .then(result => {
           const loggedUser = result.user;
             console.log(loggedUser);
+            navigate('/')
             toast.success('Successfully created an account!')
          });
     }

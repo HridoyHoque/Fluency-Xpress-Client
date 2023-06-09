@@ -25,6 +25,9 @@ const Login = () => {
                 toast.success('account loggedIn successfully!')
 
             })
+            .catch(() => {
+                toast.error('Not valid Email and password!')
+            })
     }
     console.log(errors);
 

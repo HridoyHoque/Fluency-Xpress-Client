@@ -8,7 +8,7 @@ const Footer = () => {
                     <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
                         {/* Website Name */}
                         <div className="col-span-1">
-                            <h2 className="text-3xl font-bold text-white">Fluency Xpress</h2>
+                            <h2 className="text-3xl font-bold text-white">Fluency <span className="text-blue-500">Xpress</span></h2>
                             <p className="text-gray-400 mt-4">
                                 Providing unique language learning experiences since 1993.
                             </p>
