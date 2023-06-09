@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
+import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
@@ -77,6 +78,7 @@ const SignUp = () => {
                         <p className="mt-1">Already have an account? <Link to='/login' className="text-blue-400">Login Now</Link> </p>
                     </div>
                 </form>
+                <SocialLogin></SocialLogin>
                 <Toaster/>
             </div>
         </div>
