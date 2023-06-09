@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 
 const Navbar = () => {
@@ -13,7 +13,7 @@ const Navbar = () => {
           <div className="flex items-center justify-between h-16">
             {/* Logo and Website Name */}
             <div className="flex-shrink-0">
-              <h1 className="text-3xl font-bold text-white">Fluency Xpress</h1>
+             <Link to='/'> <h1 className="text-3xl font-bold text-white">Fluency Xpress</h1></Link>
             </div>
   
             {/* User Photo */}
@@ -67,11 +67,11 @@ const Navbar = () => {
                 </li>
                 <li>
                   <NavLink
-                    to="/profile"
+                    to="/login"
                     activeClassName="text-white"
                     className="text-gray-300 hover:text-white"
                   >
-                    User
+                    Login
                   </NavLink>
                 </li>
               </ul>
@@ -147,11 +147,11 @@ const Navbar = () => {
             </li>
             <li>
               <NavLink
-                to="/profile"
+                to="/login"
                 activeClassName="text-white"
                 className="text-gray-300 hover:text-white block"
               >
-                User
+                Login
               </NavLink>
             </li>
           </ul>

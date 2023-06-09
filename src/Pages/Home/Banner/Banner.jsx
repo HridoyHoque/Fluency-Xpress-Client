@@ -7,9 +7,12 @@ import AwesomeSlider from 'react-awesome-slider';
 const Banner = () => {
     return (
         <> <AwesomeSlider>
-            <div><img src="https://i.ibb.co/vswFh5v/brooke-cagle-g1-Kr4-Ozfoac-unsplash.jpg" alt="" /></div>
-            <div><img src="https://i.ibb.co/vswFh5v/brooke-cagle-g1-Kr4-Ozfoac-unsplash.jpg" alt="" /></div>
-            <div><img src="https://i.ibb.co/vswFh5v/brooke-cagle-g1-Kr4-Ozfoac-unsplash.jpg" alt="" /></div>
+            <div>
+                <img className='w-screen' src="https://i.ibb.co/0ntZPLz/s1.png" alt="" />
+            </div>
+            <div>
+                <img className='w-screen' src="https://i.ibb.co/vswFh5v/brooke-cagle-g1-Kr4-Ozfoac-unsplash.jpg" alt="" />
+            </div>
         </AwesomeSlider>
         </>
     );
