@@ -32,7 +32,7 @@ const Navbar = () => {
                   <NavLink
                     exact
                     to="/"
-                    activeClassName="text-white"
+                   
                     className="text-gray-300 hover:text-white"
                   >
                     Home
@@ -41,7 +41,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/instructors"
-                    activeClassName="text-white"
+                   
                     className="text-gray-300 hover:text-white"
                   >
                     Instructors
@@ -50,7 +50,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/classes"
-                    activeClassName="text-white"
+                   
                     className="text-gray-300 hover:text-white"
                   >
                     Classes
@@ -59,7 +59,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/dashboard"
-                    activeClassName="text-white"
+                   
                     className="text-gray-300 hover:text-white"
                   >
                     Dashboard
@@ -68,7 +68,7 @@ const Navbar = () => {
                 <li>
                   <NavLink
                     to="/login"
-                    activeClassName="text-white"
+                   
                     className="text-gray-300 hover:text-white"
                   >
                     Login
@@ -112,7 +112,7 @@ const Navbar = () => {
               <NavLink
                 exact
                 to="/"
-                activeClassName="text-white"
+               
                 className="text-gray-300 hover:text-white block"
               >
                 Home
@@ -121,7 +121,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/instructors"
-                activeClassName="text-white"
+               
                 className="text-gray-300 hover:text-white block"
               >
                 Instructors
@@ -130,7 +130,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/classes"
-                activeClassName="text-white"
+               
                 className="text-gray-300 hover:text-white block"
               >
                 Classes
@@ -139,7 +139,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/dashboard"
-                activeClassName="text-white"
+               
                 className="text-gray-300 hover:text-white block"
               >
                 Dashboard
@@ -148,7 +148,7 @@ const Navbar = () => {
             <li>
               <NavLink
                 to="/login"
-                activeClassName="text-white"
+               
                 className="text-gray-300 hover:text-white block"
               >
                 Login
