@@ -1,82 +1,82 @@
 [
     {
       "_id": "1",
-      "className": "English Conversation",
-      "image": "https://example.com/english-conversation.jpg",
+      "nameOfClass": "English Conversation",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "John Smith",
       "email": "johnsmith@example.com",
       "availableSeats": 10,
       "price": 99.99,
-      "totalEnrolledStudents": 20
+      "totalEnrolledStudents": 45
     },
     {
       "_id": "2",
-      "className": "Spanish for Beginners",
-      "image": "https://example.com/spanish-for-beginners.jpg",
+      "nameOfClass": "Spanish for Beginners",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Maria Rodriguez",
       "email": "mariarodriguez@example.com",
       "availableSeats": 8,
       "price": 89.99,
-      "totalEnrolledStudents": 15
+      "totalEnrolledStudents": 40
     },
     {
       "_id": "3",
-      "className": "French Pronunciation",
-      "image": "https://example.com/french-pronunciation.jpg",
+      "nameOfClass": "French Pronunciation",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Sophie Dubois",
       "email": "sophiedubois@example.com",
       "availableSeats": 12,
       "price": 109.99,
-      "totalEnrolledStudents": 18
+      "totalEnrolledStudents": 35
     },
     {
       "_id": "4",
-      "className": "German Grammar",
-      "image": "https://example.com/german-grammar.jpg",
+      "nameOfClass": "German Grammar",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Max Müller",
       "email": "maxmuller@example.com",
       "availableSeats": 7,
       "price": 79.99,
-      "totalEnrolledStudents": 10
+      "totalEnrolledStudents": 30
     },
     {
       "_id": "5",
-      "className": "Chinese Writing",
-      "image": "https://example.com/chinese-writing.jpg",
+      "nameOfClass": "Chinese Writing",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Li Wei",
       "email": "liwei@example.com",
       "availableSeats": 15,
       "price": 129.99,
-      "totalEnrolledStudents": 22
+      "totalEnrolledStudents": 25
     },
     {
       "_id": "6",
-      "className": "Italian Culture and Customs",
-      "image": "https://example.com/italian-culture.jpg",
+      "nameOfClass": "Italian Culture",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Giuseppe Rossi",
       "email": "giusepperossi@example.com",
       "availableSeats": 9,
       "price": 94.99,
-      "totalEnrolledStudents": 16
+      "totalEnrolledStudents": 20
     },
     {
       "_id": "7",
-      "className": "Japanese Kanji",
-      "image": "https://example.com/japanese-kanji.jpg",
+      "nameOfClass": "Japanese Kanji",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Hiroshi Tanaka",
       "email": "hiroshitanaka@example.com",
       "availableSeats": 6,
-      "price": 84.99,
-      "totalEnrolledStudents": 12
+      "price": 11,
+      "totalEnrolledStudents": 15
     },
     {
       "_id": "8",
-      "className": "Arabic for Travelers",
-      "image": "https://example.com/arabic-for-travelers.jpg",
+      "nameOfClass": "Arabic for Travelers",
+      "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Fatima Ahmed",
       "email": "fatimaahmed@example.com",
       "availableSeats": 11,
-      "price": 104.99,
-      "totalEnrolledStudents": 19
+      "price": 200,
+      "totalEnrolledStudents": 55
     }
   ]

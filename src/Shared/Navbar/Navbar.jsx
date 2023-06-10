@@ -90,13 +90,21 @@ const Navbar = () => {
             </div>
 
             {/* User Photo */}
-            <div className="">
+            {
+              user ? <><div className="">
+              <img
+                src={user && user.photoURL}
+                alt="User Photo"
+                className="w-9 h-9 rounded-full"
+              />
+            </div></> : <div className="">
               <img
                 src="https://i.ibb.co/q0p4Fg8/users.png"
                 alt="User Photo"
                 className="h-8 w-8 rounded-full"
               />
             </div>
+            }
             {/* Mobile Menu */}
             <div className="md:hidden flex items-center">
               <button
