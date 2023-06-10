@@ -5,10 +5,11 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { saveUser } from "../../api/auth";
 
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {createUser} = useContext(AuthContext);
+    const {createUser, updateUserProfile} = useContext(AuthContext);
     const navigate = useNavigate()
     const onSubmit = data => {
       if(data.password !== data.confirmPassword){
@@ -17,10 +18,16 @@ const SignUp = () => {
       }
         createUser(data.email, data.password)
         .then(result => {
-          const loggedUser = result.user;
-            console.log(loggedUser);
-            navigate('/')
-            toast.success('Successfully created an account!')
+            updateUserProfile(data.name, data.photo)
+            .then(() => {
+               saveUser(result.user)
+                toast.success('Successfully created an account!')
+                navigate('/')
+            })
+            .catch(err => {
+                console.log(err.message)
+            })
+            
          });
     }
     return (
