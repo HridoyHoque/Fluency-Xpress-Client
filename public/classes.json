@@ -1,6 +1,6 @@
 [
     {
-      "_id": "1",
+     
       "nameOfClass": "English Conversation",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "John Smith",
@@ -10,7 +10,7 @@
       "totalEnrolledStudents": 45
     },
     {
-      "_id": "2",
+     
       "nameOfClass": "Spanish for Beginners",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Maria Rodriguez",
@@ -20,7 +20,7 @@
       "totalEnrolledStudents": 40
     },
     {
-      "_id": "3",
+     
       "nameOfClass": "French Pronunciation",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Sophie Dubois",
@@ -30,7 +30,7 @@
       "totalEnrolledStudents": 35
     },
     {
-      "_id": "4",
+     
       "nameOfClass": "German Grammar",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Max Müller",
@@ -40,7 +40,7 @@
       "totalEnrolledStudents": 30
     },
     {
-      "_id": "5",
+     
       "nameOfClass": "Chinese for Beginners",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Li Wei",
@@ -50,7 +50,7 @@
       "totalEnrolledStudents": 25
     },
     {
-      "_id": "6",
+     
       "nameOfClass": "Italian Culture",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Giuseppe Rossi",
@@ -60,7 +60,7 @@
       "totalEnrolledStudents": 20
     },
     {
-      "_id": "7",
+     
       "nameOfClass": "Japanese Kanji",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Hiroshi Tanaka",
@@ -70,7 +70,7 @@
       "totalEnrolledStudents": 15
     },
     {
-      "_id": "8",
+     
       "nameOfClass": "Arabic for Travelers",
       "image": "https://i.ibb.co/Dw78g45/7471746.jpg",
       "instructorName": "Fatima Ahmed",
