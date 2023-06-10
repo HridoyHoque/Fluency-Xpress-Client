@@ -2,14 +2,17 @@ import { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { AiOutlineEyeInvisible, AiOutlineEye } from 'react-icons/ai';
 import toast, { Toaster } from 'react-hot-toast';
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
 
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
     const { signIn } = useContext(AuthContext);
+    const location = useLocation()
     const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || "/";
 
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -21,7 +24,7 @@ const Login = () => {
             .then(result => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
-                navigate('/')
+                navigate(from, { replace: true });
                 toast.success('account loggedIn successfully!')
 
             })

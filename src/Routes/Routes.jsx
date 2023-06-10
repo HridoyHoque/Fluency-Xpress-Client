@@ -6,6 +6,8 @@ import Home from "../Pages/Home/Home/Home";
 import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/Signup/SignUp";
 import Instructors from "../Pages/Instructors/Instructors";
+import DashboardLayout from "../Layout/DashboardLayout";
+import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
     {
@@ -30,6 +32,17 @@ const router = createBrowserRouter([
             }
         ]
     },
+    {
+        path: 'dashboard',
+        element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
+        children: [
+           
+            {
+                path: 'secondPage',
+                element: <p>Dashboard second page</p>
+            }
+        ]
+    }
 ]);
 
 export default router;

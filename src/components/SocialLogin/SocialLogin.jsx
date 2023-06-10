@@ -2,19 +2,22 @@ import { useContext } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 import { AuthContext } from '../../Providers/AuthProvider';
 import toast, { Toaster } from 'react-hot-toast';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { saveUser } from '../../api/auth';
 
 const SocialLogin = () => {
     const { googleSignIn } = useContext(AuthContext);
+    const location = useLocation()
     const navigate = useNavigate()
+
+    const from = location.state?.from?.pathname || "/";
     const handleGoogleSignIn = () => {
         googleSignIn()
             .then(result => {
                 // save users to  database
                 saveUser(result.user)
                 toast.success('account logged In successfully!')
-                navigate('/')
+                navigate(from, { replace: true });
             })
     }
     return (
