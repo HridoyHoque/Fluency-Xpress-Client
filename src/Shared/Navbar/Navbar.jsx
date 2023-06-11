@@ -72,6 +72,28 @@ const Navbar = () => {
                  </NavLink>
                </li>
                }
+               {
+                role === 'instructor' &&
+                 <li>
+                 <NavLink
+                   to="/dashboard"
+                   className="text-gray-300 hover:text-white"
+                 >
+                   Dashboard
+                 </NavLink>
+               </li>
+               }
+               {
+               !role &&
+                 <li>
+                 <NavLink
+                   to="/dashboard"
+                   className="text-gray-300 hover:text-white"
+                 >
+                   Dashboard
+                 </NavLink>
+               </li>
+               }
                 {
                   user ? <> <li>
                     <button onClick={() => {

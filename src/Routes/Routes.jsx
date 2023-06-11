@@ -9,6 +9,7 @@ import Instructors from "../Pages/Instructors/Instructors";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
 import ManageUsers from "../Pages/ManageUsers/ManageUsers";
+import AddClasses from "../Pages/Instructors/AddClasses";
 
 const router = createBrowserRouter([
     {
@@ -37,10 +38,15 @@ const router = createBrowserRouter([
         path: 'dashboard',
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
-           
+            // admin dashboard
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
+            },
+            // instructor dashboard
+            {
+                path: 'addClass',
+                element: <AddClasses></AddClasses>
             }
         ]
     }

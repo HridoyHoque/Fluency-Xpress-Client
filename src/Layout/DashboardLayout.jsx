@@ -1,6 +1,7 @@
 import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUtensils, FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
 import { ImHome } from 'react-icons/im';
+import { AiFillFileAdd } from 'react-icons/ai';
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 const DashboardLayout = () => {
@@ -37,6 +38,14 @@ const DashboardLayout = () => {
                             <li className="font-semibold mt-2"><Link to='/'><ImHome size={24}/> Back Home</Link></li>
                             <li className="font-semibold"><NavLink to="/dashboard/adminhome"><FaChalkboardTeacher size={24}/> Manage Classes</NavLink></li>
                             <li className="font-semibold mt-2"><NavLink to="/dashboard/manageUsers"> <FaUserShield size={24}/> Manage Users</NavLink></li>
+                        </>
+                    }
+                    {
+                        role === 'instructor' && <>
+                        <li className="ml-8 mb-4 text-2xl">Instructor Dashboard</li>
+                            <li className="font-semibold mt-2"><Link to='/'><ImHome size={24}/> Back Home</Link></li>
+                            <li className="font-semibold"><NavLink to="/dashboard/addClass"><AiFillFileAdd size={24}/>Add a Class</NavLink></li>
+                            <li className="font-semibold mt-2"><NavLink to="/dashboard/myClasses"> <FaChalkboardTeacher size={24}/> My Classes</NavLink></li>
                         </>
                     }
                     {
