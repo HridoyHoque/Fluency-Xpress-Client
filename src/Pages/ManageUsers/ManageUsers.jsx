@@ -1,23 +1,31 @@
-import { useState } from "react";
-import { useEffect } from "react";
+// import { useState } from "react";
+// import { useEffect } from "react";
 import { FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
 import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
 
 
 const ManageUsers = () => {
 
-    const [allUsers, setAllUsers] = useState(null);
+    // const [allUsers, setAllUsers] = useState(null);
     const { role } = useContext(AuthContext)
 
-    useEffect(() => {
-        fetch('http://localhost:5000/users')
-            .then(res => res.json())
-            .then(data => {
-                setAllUsers(data);
-            })
-    }, [allUsers])
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/users')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setAllUsers(data);
+    //         })
+    // }, [allUsers])
+
+    // use TanStack query to refetch and load users data
+
+    const {data: allUsers = [], refetch } = useQuery(['allUsers'], async () => {
+        const res = await fetch('http://localhost:5000/users')
+        return res.json();
+    })
 
     const makeAdmin = (userId) => {
         // Logic to make user with userId an admin
