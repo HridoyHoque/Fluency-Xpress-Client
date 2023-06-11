@@ -8,6 +8,7 @@ import SignUp from "../Pages/Signup/SignUp";
 import Instructors from "../Pages/Instructors/Instructors";
 import DashboardLayout from "../Layout/DashboardLayout";
 import PrivateRoute from "./PrivateRoute";
+import ManageUsers from "../Pages/ManageUsers/ManageUsers";
 
 const router = createBrowserRouter([
     {
@@ -38,8 +39,8 @@ const router = createBrowserRouter([
         children: [
            
             {
-                path: 'secondPage',
-                element: <p>Dashboard second page</p>
+                path: 'manageUsers',
+                element: <ManageUsers></ManageUsers>
             }
         ]
     }

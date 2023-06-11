@@ -5,6 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProvider";
 import SocialLogin from "../../components/SocialLogin/SocialLogin";
+import { saveUser } from "../../api/auth";
 
 const Login = () => {
     const [passwordVisible, setPasswordVisible] = useState(false);
@@ -22,8 +23,7 @@ const Login = () => {
         console.log(data);
         signIn(data.email, data.password)
             .then(result => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
+                saveUser(result.user)
                 navigate(from, { replace: true });
                 toast.success('account loggedIn successfully!')
 

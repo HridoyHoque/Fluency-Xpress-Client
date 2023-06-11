@@ -5,7 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const { user, logOut, setRole } = useContext(AuthContext);
+  const { user, logOut, setRole, role } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -61,20 +61,23 @@ const Navbar = () => {
                     Classes
                   </NavLink>
                 </li>
-                <li>
-                  <NavLink
-                    to="/dashboard"
-                    className="text-gray-300 hover:text-white"
-                  >
-                    Dashboard
-                  </NavLink>
-                </li>
+               {
+                role === 'admin' &&
+                 <li>
+                 <NavLink
+                   to="/dashboard/manageUsers"
+                   className="text-gray-300 hover:text-white"
+                 >
+                   Dashboard
+                 </NavLink>
+               </li>
+               }
                 {
                   user ? <> <li>
-                    <button   onClick={() => {
-                    setRole(null)
-                    logOut()
-                  }}
+                    <button onClick={() => {
+                      setRole(null)
+                      logOut()
+                    }}
                       className="btn btn-outline btn-error text-gray-300 hover:text-white block"
                     >
                       Logout
@@ -94,19 +97,18 @@ const Navbar = () => {
 
             {/* User Photo */}
             {
-              user ? <><div className="">
-                <img
-                  src={user && user.photoURL}
-                  alt="User Photo"
-                  className="w-9 h-9 rounded-full"
-                />
-              </div></> : <div className="">
-                <img
-                  src="https://i.ibb.co/q0p4Fg8/users.png"
-                  alt="User Photo"
-                  className="h-8 w-8 rounded-full"
-                />
+              user ? <div className="avatar">
+                <div className="w-12 rounded-full">
+                  <img src={user && user.photoURL} />
+                </div>
               </div>
+                : <div className="">
+                  <img
+                    src="https://i.ibb.co/q0p4Fg8/users.png"
+                    alt="User Photo"
+                    className="h-8 w-8 rounded-full"
+                  />
+                </div>
             }
             {/* Mobile Menu */}
             <div className="md:hidden flex items-center">
