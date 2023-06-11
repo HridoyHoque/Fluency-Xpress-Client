@@ -28,8 +28,8 @@ const ManageUsers = () => {
         return res.json();
     })
 
+    // make user to admin
     const makeAdmin = (user) => {
-        console.log(`Make Admin - User ID: ${user._id}`);
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH',
         })
@@ -44,8 +44,18 @@ const ManageUsers = () => {
     };
 
     const makeInstructor = (user) => {
-        // Logic to make user with id an instructor
         console.log(`Make Instructor - User ID: ${user._id}`);
+        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+            method: 'PATCH'
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.modifiedCount){
+                refetch()
+                toast.success(`${user.name} is instructor now`);
+            }
+        })
     };
     return (
         <div className="container mx-auto">

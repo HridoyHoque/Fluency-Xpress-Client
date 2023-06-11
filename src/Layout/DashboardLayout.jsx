@@ -1,5 +1,6 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import { FaHome, FaUtensils, FaUserShield, FaChalkboardTeacher } from 'react-icons/fa';
+import { ImHome } from 'react-icons/im';
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
 const DashboardLayout = () => {
@@ -33,14 +34,16 @@ const DashboardLayout = () => {
                     {
                         role === 'admin' && <>
                         <li className="ml-8 mb-4 text-2xl">Admin Dashboard</li>
+                            <li className="font-semibold mt-2"><Link to='/'><ImHome size={24}/> Back Home</Link></li>
                             <li className="font-semibold"><NavLink to="/dashboard/adminhome"><FaChalkboardTeacher size={24}/> Manage Classes</NavLink></li>
-                            <li className="font-semibold"><NavLink to="/dashboard/manageUsers"> <FaUserShield size={24}/> Manage Users</NavLink></li>
+                            <li className="font-semibold mt-2"><NavLink to="/dashboard/manageUsers"> <FaUserShield size={24}/> Manage Users</NavLink></li>
                         </>
                     }
                     {
                         !role && <>
-                            <li><NavLink to="/dashboard/adminhome"><FaHome></FaHome> Student Home</NavLink></li>
-                            <li><NavLink to="/dashboard/addItem"> <FaUtensils></FaUtensils> Add an Item</NavLink></li>
+                            <li className="font-semibold mt-2"><Link to='/'><ImHome size={24}/> Back Home</Link></li>
+                            <li><NavLink to="/dashboard/adminhome"><FaHome /> Student Home</NavLink></li>
+                            <li className="font-semibold mt-2"><NavLink to="/dashboard/addItem"> <FaUtensils /> Add an Item</NavLink></li>
                         </>
                     }
                 </ul>
