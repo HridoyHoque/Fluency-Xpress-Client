@@ -5,6 +5,7 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
+import toast, { Toaster } from 'react-hot-toast';
 
 
 const ManageUsers = () => {
@@ -27,14 +28,24 @@ const ManageUsers = () => {
         return res.json();
     })
 
-    const makeAdmin = (userId) => {
-        // Logic to make user with userId an admin
-        console.log(`Make Admin - User ID: ${userId}`);
+    const makeAdmin = (user) => {
+        console.log(`Make Admin - User ID: ${user._id}`);
+        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+            method: 'PATCH',
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+            if(data.modifiedCount){
+                refetch()
+                toast.success(`${user.name} is admin now`);
+            }
+        })
     };
 
-    const makeInstructor = (userId) => {
-        // Logic to make user with userId an instructor
-        console.log(`Make Instructor - User ID: ${userId}`);
+    const makeInstructor = (user) => {
+        // Logic to make user with id an instructor
+        console.log(`Make Instructor - User ID: ${user._id}`);
     };
     return (
         <div className="container mx-auto">
@@ -69,7 +80,7 @@ const ManageUsers = () => {
                                         <>
                                             <button
                                                 disabled={user.role === 'admin'}
-                                                onClick={() => makeAdmin(user._id)}
+                                                onClick={() => makeAdmin(user)}
                                                 className="btn btn-outline btn-primary mr-2"
                                             >
                                                 <FaUserShield className="mr-1" />
@@ -77,7 +88,7 @@ const ManageUsers = () => {
                                             </button>
                                             <button
                                                 disabled={user.role === 'instructor'}
-                                                onClick={() => makeInstructor(user._id)}
+                                                onClick={() => makeInstructor(user)}
                                                 className="btn btn-outline btn-primary"
                                             >
                                                 <FaChalkboardTeacher className="mr-1" />
@@ -90,6 +101,7 @@ const ManageUsers = () => {
                         ))}
                 </tbody>
             </table>
+            <Toaster />
         </div>
     );
 };
