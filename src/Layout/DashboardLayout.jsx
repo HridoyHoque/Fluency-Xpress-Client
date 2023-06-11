@@ -36,7 +36,7 @@ const DashboardLayout = () => {
                         role === 'admin' && <>
                         <li className="ml-8 mb-4 text-2xl">Admin Dashboard</li>
                             <li className="font-semibold mt-2"><Link to='/'><ImHome size={24}/> Back Home</Link></li>
-                            <li className="font-semibold"><NavLink to="/dashboard/adminhome"><FaChalkboardTeacher size={24}/> Manage Classes</NavLink></li>
+                            <li className="font-semibold"><NavLink to="/dashboard/manageClasses"><FaChalkboardTeacher size={24}/> Manage Classes</NavLink></li>
                             <li className="font-semibold mt-2"><NavLink to="/dashboard/manageUsers"> <FaUserShield size={24}/> Manage Users</NavLink></li>
                         </>
                     }

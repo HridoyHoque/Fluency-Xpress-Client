@@ -9,19 +9,11 @@ import toast, { Toaster } from 'react-hot-toast';
 
 
 const ManageUsers = () => {
-
-    // const [allUsers, setAllUsers] = useState(null);
     const { role } = useContext(AuthContext)
 
-    // useEffect(() => {
-    //     fetch('http://localhost:5000/users')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setAllUsers(data);
-    //         })
-    // }, [allUsers])
+  
 
-    // use TanStack query to refetch and load users data
+    // use TanStack query to refetch and get users data
 
     const {data: allUsers = [], refetch } = useQuery(['allUsers'], async () => {
         const res = await fetch('http://localhost:5000/users')
@@ -75,7 +67,7 @@ const ManageUsers = () => {
                     {
                         allUsers &&
                         allUsers.map((user) => (
-                            <tr key={user._id}>
+                            <tr key={user._id} className='hover:bg-base-200'>
                                 <td className="py-2 px-4 border-b border-gray-300">
                                     <img
                                         src={user.photo}
