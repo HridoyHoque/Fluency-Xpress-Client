@@ -5,7 +5,7 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const Navbar = () => {
   const [isMenuOpen, setMenuOpen] = useState(false);
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, setRole } = useContext(AuthContext);
 
   const toggleMenu = () => {
     setMenuOpen(!isMenuOpen);
@@ -71,7 +71,10 @@ const Navbar = () => {
                 </li>
                 {
                   user ? <> <li>
-                    <button onClick={handleLogout}
+                    <button   onClick={() => {
+                    setRole(null)
+                    logOut()
+                  }}
                       className="btn btn-outline btn-error text-gray-300 hover:text-white block"
                     >
                       Logout

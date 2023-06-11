@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const Sidebar = () => {
     return (
-        <div>
+        <div className="bg-base-200">
           <Link to="/dashboard/secondPage"> GO second Page</Link>
         </div>
     );
