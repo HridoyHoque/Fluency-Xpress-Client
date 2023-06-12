@@ -1,9 +1,10 @@
 import { useContext } from "react";
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import { FaTrash, FaMoneyBill } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 
 const MySelectedClasses = () => {
@@ -14,6 +15,35 @@ const MySelectedClasses = () => {
     const classes = await res.json();
     return classes;
   });
+
+  const handleDeleteClass = (classId) => {
+    Swal.fire({
+        title: 'Are you sure Want to delete Class?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete Class!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+        fetch(`http://localhost:5000/selectedClasses/${classId}`, {
+            method: 'DELETE'
+        })
+        .then(res => {
+            console.log('deleted result', res);
+            if (res.status == 200) {
+                refetch();
+                Swal.fire(
+                    'Deleted!',
+                    'Your Class has been deleted.',
+                    'success'
+                )
+            }
+        })
+        }
+      })
+  }
     return (
         <>
         <div className="container mx-auto py-10 ml-2">
@@ -51,7 +81,7 @@ const MySelectedClasses = () => {
                   </button>
                   <button
                     className="btn bg-blue-500 hover:bg-blue-600 text-white"
-                    onClick={() => handlePayClass(classItem._id)}
+                    // onClick={() => handlePayClass(classItem._id)}
                   >
                     <FaMoneyBill className="inline-block mr-1" />
                     Pay
@@ -60,7 +90,7 @@ const MySelectedClasses = () => {
               </div>
             ))}
           </div>
-          <Toaster />
+          {/* <Toaster /> */}
         </div>
       </>
     );

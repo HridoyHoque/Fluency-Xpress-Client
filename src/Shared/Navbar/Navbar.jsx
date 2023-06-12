@@ -87,7 +87,7 @@ const Navbar = () => {
                !role &&
                  <li>
                  <NavLink
-                   to="/dashboard"
+                   to="/dashboard/mySelectedClasses"
                    className="text-gray-300 hover:text-white"
                  >
                    Dashboard
