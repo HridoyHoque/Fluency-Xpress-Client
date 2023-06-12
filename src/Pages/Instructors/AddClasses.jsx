@@ -13,6 +13,8 @@ const {user} = useContext(AuthContext)
        const form = event.target;
        const instructorName = form.instructorName.value;
        const email = form.email.value;
+
+       // TODO: upload image from file 
        const image = form.image.value;
        const name = form.name.value;
        const price = form.price.value;

@@ -45,7 +45,7 @@ const Login = () => {
                     </div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-                        <h1 className="text-center mb-3 text-5xl font-bold">Login now!</h1>
+                            <h1 className="text-center mb-3 text-5xl font-bold">Login now!</h1>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
@@ -83,7 +83,7 @@ const Login = () => {
                                 <p className="mt-1">New to Fluency Express? <Link to='/signup' className="text-blue-400">SignUp Now</Link> </p>
                             </div>
                         </form>
-                       
+
                         <SocialLogin></SocialLogin>
                     </div>
                 </div>

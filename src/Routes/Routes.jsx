@@ -14,6 +14,7 @@ import ManageClasses from "../Pages/ManageClasses/ManageClasses";
 import MyClasses from "../Pages/Instructors/MyClasses";
 import Classes from "../Pages/Classes/Classes";
 import MySelectedClasses from "../Pages/StudentDashboard/MySelectedClasses/MySelectedClasses";
+import Payment from "../Pages/StudentDashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -51,6 +52,7 @@ const router = createBrowserRouter([
 
 
             // admin dashboard
+            // TODO: Make admin route more secure
             {
                 path: 'manageUsers',
                 element: <ManageUsers></ManageUsers>
@@ -60,6 +62,7 @@ const router = createBrowserRouter([
                 element: <ManageClasses></ManageClasses>
             },
             // instructor dashboard
+            // TODO: Make instructor route more secure
             {
                 path: 'addClass',
                 element: <AddClasses></AddClasses>
@@ -73,6 +76,10 @@ const router = createBrowserRouter([
                 path: 'mySelectedClasses',
                 element: <MySelectedClasses></MySelectedClasses>
 
+            },
+            {
+                path: 'payment',
+                element: <Payment></Payment>
             }
         ]
     }
