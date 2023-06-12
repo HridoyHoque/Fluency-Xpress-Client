@@ -13,6 +13,7 @@ import AddClasses from "../Pages/Instructors/AddClasses";
 import ManageClasses from "../Pages/ManageClasses/ManageClasses";
 import MyClasses from "../Pages/Instructors/MyClasses";
 import Classes from "../Pages/Classes/Classes";
+import MySelectedClasses from "../Pages/StudentDashboard/MySelectedClasses/MySelectedClasses";
 
 const router = createBrowserRouter([
     {
@@ -47,8 +48,8 @@ const router = createBrowserRouter([
         element: <PrivateRoute><DashboardLayout></DashboardLayout></PrivateRoute>,
         children: [
 
-         
-           
+
+
             // admin dashboard
             {
                 path: 'manageUsers',
@@ -66,6 +67,12 @@ const router = createBrowserRouter([
             {
                 path: 'myClasses',
                 element: <MyClasses></MyClasses>
+            },
+            // student dashboard
+            {
+                path: 'mySelectedClasses',
+                element: <MySelectedClasses></MySelectedClasses>
+
             }
         ]
     }

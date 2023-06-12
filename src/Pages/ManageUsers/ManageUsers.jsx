@@ -20,7 +20,7 @@ const ManageUsers = () => {
         return res.json();
     })
 
-    // make user to admin
+    // make user to admin 
     const makeAdmin = (user) => {
         fetch(`http://localhost:5000/users/admin/${user._id}`, {
             method: 'PATCH',

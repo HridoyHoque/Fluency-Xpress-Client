@@ -6,8 +6,10 @@ import SectionTitle from "../../components/SectionTitle/SectionTitle";
 import toast, { Toaster } from 'react-hot-toast';
 import Swal from "sweetalert2";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const Classes = () => {
+    const [disabledButtons, setDisabledButtons] = useState([]);
     const { user, role } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation()
@@ -22,11 +24,37 @@ const Classes = () => {
     );
 
     const handleSelectClasses = classItem => {
-        if(user){
-            toast.success('successfully selected classes')
+       
+        if (user) {
+            const selectedClass = {
+                name: classItem.name, image: classItem.image, instructorName: classItem.instructorName, price: classItem.price, seats: classItem.seats, studentEmail: user.email
+            }
             console.log(classItem.seats)
+            // const studentSelectedClass = 
+            fetch('http://localhost:5000/selectedClasses',{
+                method: "POST",
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(selectedClass)
+               })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+                if(data.insertedId){
+                    toast.success('Class Booked successfully')
+                    setDisabledButtons(prevState => [...prevState, classItem._id]);
+                  
+                }
+            })
+            .catch(error => {
+                console.log(error)
+                toast.error('Failed to Book the class')
+             
+
+            })
         }
-        else{
+        else {
             Swal.fire({
                 title: 'Please login to Select the class',
                 icon: 'warning',
@@ -34,13 +62,21 @@ const Classes = () => {
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Login now!'
-              }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
-                  navigate('/login', {state: {from: location}})
+                    navigate('/login', { state: { from: location } })
                 }
-              })
+            })
         }
     }
+    const isButtonDisabled = (classItem) => {
+        return (
+          role === 'admin' ||
+          role === 'instructor' ||
+          classItem.seats < 1 ||
+          disabledButtons.includes(classItem._id)
+        );
+      };
     return (
         <>
             <div className="container mx-auto py-10 ml-2">
@@ -51,9 +87,8 @@ const Classes = () => {
                     {newClasses.map((classItem) => (
                         <div
                             key={classItem._id}
-                            className={`bg-white ${
-                                classItem.seats < 1 ? 'bg-red-300' : ''
-                              } p-6 border border-gray-300 rounded-md shadow-md flex flex-col ${classItem.seats > 0 ? "hover:bg-base-200" : "hover:bg-red-200"}`}
+                            className={`${classItem.seats < 1 ? 'bg-red-200' : 'bg-white'
+                                } p-6 border border-gray-300 rounded-md shadow-md flex flex-col ${classItem.seats < 1 ? "hover:bg-red-300" : "hover:bg-base-200"} `}
                         >
                             <img
                                 src={classItem.image}
@@ -76,17 +111,17 @@ const Classes = () => {
                             </div>
                             <div className="flex justify-between">
 
-                             <div
-                            >
-                             <button
-                                    disabled={role === 'admin' || role === 'instructor' || classItem.seats == 0}
-                                    className="btn bg-blue-500 hover:bg-blue-600 text-white"
-                                    onClick={() => handleSelectClasses(classItem)}
+                                <div
                                 >
-                                    <FaUserPlus className="inline-block mr-1" />
-                                    Select Class
-                                </button>
-                             </div>
+                                    <button
+                                       disabled={isButtonDisabled(classItem)}
+                                        className="btn bg-blue-500 hover:bg-blue-600 text-white"
+                                        onClick={() => handleSelectClasses(classItem)}
+                                    >
+                                        <FaUserPlus className="inline-block mr-1" />
+                                        Select Class
+                                    </button>
+                                </div>
 
                             </div>
                         </div>
