@@ -47,12 +47,12 @@ const ManageClasses = () => {
     }
 
     const handleFeedback = async (newClass) => {
-        console.log(newClass.feedback.text)
+      
         console.log(`feedback ${newClass.name}`);
         const { value: text } = await Swal.fire({
           input: 'textarea',
-          inputLabel: 'Message',
-          inputPlaceholder: 'Type your message here...',
+          inputLabel: 'feedback',
+          inputPlaceholder: 'Type your feedback here...',
           inputAttributes: {
             'aria-label': 'Type your message here',
           },

@@ -76,7 +76,7 @@ const Navbar = () => {
                 role === 'instructor' &&
                  <li>
                  <NavLink
-                   to="/dashboard"
+                   to="/dashboard/addClass"
                    className="text-gray-300 hover:text-white"
                  >
                    Dashboard
@@ -172,6 +172,8 @@ const Navbar = () => {
                 Home
               </NavLink>
             </li>
+
+            {/* TODO: make navlink conditional */}
             <li>
               <NavLink
                 to="/instructors"

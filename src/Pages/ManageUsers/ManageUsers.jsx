@@ -83,7 +83,7 @@ const ManageUsers = () => {
                                             <button
                                                 disabled={user.role === 'admin'}
                                                 onClick={() => makeAdmin(user)}
-                                                className="btn btn-outline btn-primary mr-2"
+                                                className="btn btn-outline mr-2"
                                             >
                                                 <FaUserShield className="mr-1" />
                                                 Make Admin
