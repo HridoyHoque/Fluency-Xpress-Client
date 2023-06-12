@@ -64,7 +64,7 @@ const Login = () => {
                                         placeholder="password"
                                         className="input input-bordered mt-2 pr-10"
                                     />
-                                    {errors.password && <span className="text-red-500 mt-1">email is required</span>}
+                                    {errors.password && <span className="text-red-500 mt-1">Password is required</span>}
                                     <button
                                         type="button"
                                         className="password-toggle-btn"

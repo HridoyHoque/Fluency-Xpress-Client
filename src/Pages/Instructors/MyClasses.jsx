@@ -6,7 +6,6 @@ import { useState } from "react";
 import {  FiAlertCircle, FiXCircle, FiMessageSquare } from 'react-icons/fi';
 import {FcApproval} from 'react-icons/fc';
 import toast, { Toaster } from 'react-hot-toast';
-
 const MyClasses = () => {
 
     const { user} = useContext(AuthContext);
@@ -28,7 +27,8 @@ const MyClasses = () => {
         <div>
             <SectionTitle title="My Classes" />
             <div className="p-4">
-      <h1 className="text-2xl font-bold mb-4">Status of Classes</h1>
+     <h1 className="text-2xl font-bold mb-4">You Can Add a class from Add a class page</h1>
+     
       {myClasses && myClasses.map((myClass) => (
         <div
           key={myClass.id}
