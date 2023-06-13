@@ -81,6 +81,7 @@ const MySelectedClasses = () => {
                                     Delete
                                 </button>
                                 <Link 
+                                state={classItem}
                                 to="/dashboard/payment"><button
                                     className="btn bg-blue-500 hover:bg-blue-600 text-white"
                                     // onClick={() => handlePayClass(classItem._id)}

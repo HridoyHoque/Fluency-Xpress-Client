@@ -3,9 +3,9 @@ import { useContext } from "react";
 import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
+import toast, { Toaster } from 'react-hot-toast';
 
-
-const CheckoutForm = () => {
+const CheckoutForm = ({classItem}) => {
     const stripe = useStripe();
     const elements = useElements()
     const [cardError, setCardError] = useState('')
@@ -15,7 +15,7 @@ const CheckoutForm = () => {
     const [transactionId, setTransactionId] = useState('');
     
 // TODO: take the price from student selectedClasses
- const price = 14;
+  const price = parseInt(classItem.price)
 
     useEffect(() => {
       if(price > 0){
@@ -28,11 +28,11 @@ const CheckoutForm = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
             setClientSecret(data.clientSecret);
         })
       }
-    },[])
+    },[price])
     const handleSubmit = async (event) => {
         event.preventDefault()
         if (!stripe || !elements) {
@@ -42,7 +42,7 @@ const CheckoutForm = () => {
         if (card === null) {
             return
         }
-        const { error, paymentMethod } = await stripe.createPaymentMethod({
+        const { error } = await stripe.createPaymentMethod({
             type: 'card',
             card
         })
@@ -53,7 +53,7 @@ const CheckoutForm = () => {
         }
         else {
             setCardError('')
-            console.log('payment method', paymentMethod)
+            // console.log('payment method', paymentMethod)
         }
 
         setProcessing(true);
@@ -76,7 +76,25 @@ const CheckoutForm = () => {
         setProcessing(false);
         if(paymentIntent.status === 'succeeded'){
             setTransactionId(paymentIntent.id);
-            const transactionId = paymentIntent.id;
+            // save payment information to database
+            const payment = {
+                email: user?.email,
+                transactionId: paymentIntent.id,
+                price,
+                date: new Date(),
+                status: 'Enrolled'
+            }
+            fetch('http://localhost:5000/payments',{
+                method: 'POST',
+                headers: { 'content-type': 'application/json' },
+                body: JSON.stringify(payment)
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.insertedId){
+                    toast.success('Please check payment history to see your payment details!')
+                }
+            })
         }
     };
     return (
@@ -104,6 +122,7 @@ const CheckoutForm = () => {
         </form>
         {cardError && <p className="text-red-600 mt-1">{cardError}</p>}
         {transactionId && <p className="text-blue-500">Transaction complete with transactionId: {transactionId}</p>}
+        <Toaster />
        </>
     );
 };
