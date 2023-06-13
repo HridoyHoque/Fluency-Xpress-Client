@@ -90,7 +90,7 @@ const CheckoutForm = ({classItem}) => {
                 seats: classItem.seats,
                 instructorName: classItem.instructorName,
                 enrolledClassName: classItem.name,
-                email: classItem.studentEmail,
+                email: user?.email,
                 image: classItem.image,
                 price,
                 transactionId: paymentIntent.id,

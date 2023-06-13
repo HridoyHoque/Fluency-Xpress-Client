@@ -36,7 +36,6 @@ const Navbar = () => {
               <ul className="flex space-x-4 justify-center items-center">
                 <li>
                   <NavLink
-                    exact
                     to="/"
 
                     className="text-gray-300 hover:text-white"
@@ -165,7 +164,6 @@ const Navbar = () => {
           <ul className="py-2 px-4 space-y-2">
             <li>
               <NavLink
-                exact
                 to="/"
                 className="text-gray-300 hover:text-white block"
               >
