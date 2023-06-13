@@ -80,7 +80,8 @@ const MySelectedClasses = () => {
                                     <FaTrash className="inline-block mr-1" />
                                     Delete
                                 </button>
-                                <Link to="/dashboard/payment"><button
+                                <Link 
+                                to="/dashboard/payment"><button
                                     className="btn bg-blue-500 hover:bg-blue-600 text-white"
                                     // onClick={() => handlePayClass(classItem._id)}
                                 >
