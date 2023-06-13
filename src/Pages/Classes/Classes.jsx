@@ -27,7 +27,7 @@ const Classes = () => {
        
         if (user) {
             const selectedClass = {
-                name: classItem.name, image: classItem.image, instructorName: classItem.instructorName, price: classItem.price, seats: classItem.seats, studentEmail: user.email
+                name: classItem.name, image: classItem.image, instructorName: classItem.instructorName, price: classItem.price, seats: parseInt(classItem.seats), studentEmail: user.email
             }
             console.log(classItem.seats)
             // const studentSelectedClass = 

@@ -4,6 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
+// import { useQuery } from "@tanstack/react-query";
 
 const CheckoutForm = ({classItem}) => {
     const stripe = useStripe();
@@ -13,6 +14,11 @@ const CheckoutForm = ({classItem}) => {
     const {user} = useContext(AuthContext);
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
+
+    // const {data: newClasses = []} = useQuery(['newClasses'], async () => {
+    //     const res = await fetch('http://localhost:5000/newClasses')
+    //     return res.json();
+    // })
     
 // TODO: take the price from student selectedClasses
   const price = parseInt(classItem.price)
@@ -78,9 +84,14 @@ const CheckoutForm = ({classItem}) => {
             setTransactionId(paymentIntent.id);
             // save payment information to database
             const payment = {
-                email: user?.email,
-                transactionId: paymentIntent.id,
+                classId: classItem._id,
+                seats: classItem.seats,
+                instructorName: classItem.instructorName,
+                enrolledClassName: classItem.name,
+                email: classItem.studentEmail,
+                image: classItem.image,
                 price,
+                transactionId: paymentIntent.id,
                 date: new Date(),
                 status: 'Enrolled'
             }
@@ -91,8 +102,18 @@ const CheckoutForm = ({classItem}) => {
             })
             .then(res => res.json())
             .then(data => {
-                if(data.insertedId){
+                console.log('last recheck of payment', data)
+                if(data.result.insertedId){
                     toast.success('Please check payment history to see your payment details!')
+                    // fetch(`http://localhost:5000/newClasses/${newClasses._id}`,{
+                    //     method: 'PUT',
+                    //     headers: { 'Content-Type': 'application/json'},
+                    //     body: JSON.stringify(newClasses)
+                    // })
+                    // .then(res => res.json())
+                    // .then(data => {
+                    //     console.log(data)
+                    // })
                 }
             })
         }

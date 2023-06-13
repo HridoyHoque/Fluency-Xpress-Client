@@ -17,8 +17,8 @@ const {user} = useContext(AuthContext)
        // TODO: upload image from file 
        const image = form.image.value;
        const name = form.name.value;
-       const price = form.price.value;
-       const seats = form.seats.value;
+       const price = parseInt(form.price.value);
+       const seats = parseInt(form.seats.value);
        const status = form.status.value;
        const newClass = {instructorName, email, image, name, price, seats, status}
        console.log(newClass)
