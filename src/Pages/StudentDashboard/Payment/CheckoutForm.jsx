@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { AuthContext } from "../../../Providers/AuthProvider";
 import toast, { Toaster } from 'react-hot-toast';
-// import { useQuery } from "@tanstack/react-query";
+import { useQuery } from "@tanstack/react-query";
 
 const CheckoutForm = ({classItem}) => {
     const stripe = useStripe();
@@ -15,10 +15,12 @@ const CheckoutForm = ({classItem}) => {
     const [processing, setProcessing] = useState(false);
     const [transactionId, setTransactionId] = useState('');
 
-    // const {data: newClasses = []} = useQuery(['newClasses'], async () => {
-    //     const res = await fetch('http://localhost:5000/newClasses')
-    //     return res.json();
-    // })
+    const {data: newClasses = []} = useQuery(['newClasses'], async () => {
+        const res = await fetch('http://localhost:5000/newClasses')
+        return res.json();
+    })
+
+    console.log(newClasses)
     
 // TODO: take the price from student selectedClasses
   const price = parseInt(classItem.price)
@@ -105,15 +107,14 @@ const CheckoutForm = ({classItem}) => {
                 console.log('last recheck of payment', data)
                 if(data.result.insertedId){
                     toast.success('Please check payment history to see your payment details!')
-                    // fetch(`http://localhost:5000/newClasses/${newClasses._id}`,{
-                    //     method: 'PUT',
-                    //     headers: { 'Content-Type': 'application/json'},
-                    //     body: JSON.stringify(newClasses)
-                    // })
-                    // .then(res => res.json())
-                    // .then(data => {
-                    //     console.log(data)
-                    // })
+                    fetch(`http://localhost:5000/newClasses/${classItem.itemId}`, {
+                        method: 'PUT'
+                    })
+                    .then(res => res.json)
+                    .then(data =>  {
+                        console.log(data)
+                    })
+                  
                 }
             })
         }

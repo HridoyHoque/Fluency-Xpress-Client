@@ -20,7 +20,8 @@ const {user} = useContext(AuthContext)
        const price = parseInt(form.price.value);
        const seats = parseInt(form.seats.value);
        const status = form.status.value;
-       const newClass = {instructorName, email, image, name, price, seats, status}
+       const totalEnrolledStudents = 0
+       const newClass = {instructorName, email, image, name, price, seats, status, totalEnrolledStudents}
        console.log(newClass)
 
        fetch('http://localhost:5000/newClasses',{
@@ -35,6 +36,7 @@ const {user} = useContext(AuthContext)
         console.log(data);
         if(data.insertedId){
             toast.success('Class added successfully')
+          
         }
        })
     } 
