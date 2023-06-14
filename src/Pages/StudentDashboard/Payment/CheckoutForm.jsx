@@ -16,7 +16,7 @@ const CheckoutForm = ({classItem}) => {
     const [transactionId, setTransactionId] = useState('');
 
     const {data: newClasses = []} = useQuery(['newClasses'], async () => {
-        const res = await fetch('http://localhost:5000/newClasses')
+        const res = await fetch('https://fluency-xpress-server.vercel.app/newClasses')
         return res.json();
     })
 
@@ -27,7 +27,7 @@ const CheckoutForm = ({classItem}) => {
 
     useEffect(() => {
       if(price > 0){
-        fetch("http://localhost:5000/create-payment-intent", {
+        fetch("https://fluency-xpress-server.vercel.app/create-payment-intent", {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -97,7 +97,7 @@ const CheckoutForm = ({classItem}) => {
                 date: new Date(),
                 status: 'Enrolled'
             }
-            fetch('http://localhost:5000/payments',{
+            fetch('https://fluency-xpress-server.vercel.app/payments',{
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(payment)
@@ -107,7 +107,7 @@ const CheckoutForm = ({classItem}) => {
                 console.log('last recheck of payment', data)
                 if(data.result.insertedId){
                     toast.success('Please check payment history to see your payment details!')
-                    fetch(`http://localhost:5000/newClasses/${classItem.itemId}`, {
+                    fetch(`https://fluency-xpress-server.vercel.app/newClasses/${classItem.itemId}`, {
                         method: 'PUT'
                     })
                     .then(res => res.json)

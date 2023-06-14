@@ -16,13 +16,13 @@ const ManageUsers = () => {
     // use TanStack query to refetch and get users data
 
     const {data: allUsers = [], refetch } = useQuery(['allUsers'], async () => {
-        const res = await fetch('http://localhost:5000/users')
+        const res = await fetch('https://fluency-xpress-server.vercel.app/users')
         return res.json();
     })
 
     // make user to admin 
     const makeAdmin = (user) => {
-        fetch(`http://localhost:5000/users/admin/${user._id}`, {
+        fetch(`https://fluency-xpress-server.vercel.app/users/admin/${user._id}`, {
             method: 'PATCH',
         })
         .then(res => res.json())
@@ -37,7 +37,7 @@ const ManageUsers = () => {
 
     const makeInstructor = (user) => {
         console.log(`Make Instructor - User ID: ${user._id}`);
-        fetch(`http://localhost:5000/users/instructor/${user._id}`, {
+        fetch(`https://fluency-xpress-server.vercel.app/users/instructor/${user._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -52,7 +52,7 @@ const ManageUsers = () => {
     return (
         <div className="container mx-auto">
             <div className="mb-4">
-                <SectionTitle title="Manage All Users"></SectionTitle>
+                <SectionTitle title="Alert: if you make yourself as a instructor, then You will not be able to access this Dashboard"></SectionTitle>
             </div>
             <table className="min-w-full bg-white border border-gray-300">
                 <thead>

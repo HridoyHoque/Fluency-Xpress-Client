@@ -12,7 +12,7 @@ const MySelectedClasses = () => {
     const { user } = useContext(AuthContext);
     // use TanStack query to get student's selected classes
     const { data: selectedClasses = [], refetch } = useQuery(['selectedClasses'], async () => {
-        const res = await fetch(`http://localhost:5000/selectedClasses?studentEmail=${user.email}`);
+        const res = await fetch(`https://fluency-xpress-server.vercel.app/selectedClasses?studentEmail=${user.email}`);
         const classes = await res.json();
         return classes;
     });
@@ -28,7 +28,7 @@ const MySelectedClasses = () => {
             confirmButtonText: 'Yes, delete Class!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectedClasses/${classId}`, {
+                fetch(`https://fluency-xpress-server.vercel.app/selectedClasses/${classId}`, {
                     method: 'DELETE'
                 })
                     .then(res => {

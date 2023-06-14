@@ -13,13 +13,13 @@ const ManageClasses = () => {
     const {role} = useContext(AuthContext)
      // use TanStack query to refetch and get newClasses data
     const {data: newClasses = [], refetch} = useQuery(['newClasses'], async () => {
-        const res = await fetch('http://localhost:5000/newClasses')
+        const res = await fetch('https://fluency-xpress-server.vercel.app/newClasses')
         return res.json();
     })
 
     const handleApprove = (newClass) => {
         console.log(`approved ${newClass.name}`)
-        fetch(`http://localhost:5000/newClasses/approved/${newClass._id}`, {
+        fetch(`https://fluency-xpress-server.vercel.app/newClasses/approved/${newClass._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -33,7 +33,7 @@ const ManageClasses = () => {
     }
     const handleDeny = (newClass) => {
         console.log(`Denied ${newClass.name}`)
-        fetch(`http://localhost:5000/newClasses/denied/${newClass._id}`, {
+        fetch(`https://fluency-xpress-server.vercel.app/newClasses/denied/${newClass._id}`, {
             method: 'PATCH'
         })
         .then(res => res.json())
@@ -60,7 +60,7 @@ const ManageClasses = () => {
         });
       
         if (text) {
-          fetch(`http://localhost:5000/newClasses/feedback/${newClass._id}`, {
+          fetch(`https://fluency-xpress-server.vercel.app/newClasses/feedback/${newClass._id}`, {
             method: 'PATCH',
             headers: {
               'Content-Type': 'application/json',

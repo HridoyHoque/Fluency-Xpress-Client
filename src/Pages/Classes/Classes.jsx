@@ -16,7 +16,7 @@ const Classes = () => {
 
     // use TanStack query to refetch and get approvedClasses data
     const { data: newClasses = [] } = useQuery(['newClasses'], async () => {
-        const res = await fetch('http://localhost:5000/newClasses')
+        const res = await fetch('https://fluency-xpress-server.vercel.app/newClasses')
         const allClasses = await res.json();
         const approvedClasses = allClasses.filter((approvedClass) => approvedClass.status === 'approved');
         return approvedClasses
@@ -31,7 +31,7 @@ const Classes = () => {
             }
             console.log(classItem.seats)
             // const studentSelectedClass = 
-            fetch('http://localhost:5000/selectedClasses',{
+            fetch('https://fluency-xpress-server.vercel.app/selectedClasses',{
                 method: "POST",
                 headers: {
                     'content-type': 'application/json'

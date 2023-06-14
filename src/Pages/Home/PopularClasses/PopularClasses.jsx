@@ -7,10 +7,10 @@ const PopularClasses = () => {
     const [popularClasses, setPopularClasses] = useState(null)
 
     useEffect( () => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://fluency-xpress-server.vercel.app/newClasses')
         .then(res => res.json())
         .then(data => {
-            const sortedClasses = data.sort((a, b) => b.price - a.price)
+            const sortedClasses = data.sort((a, b) => b.totalEnrolledStudents - a.totalEnrolledStudents)
             const topClasses = sortedClasses.slice(0,6)
             setPopularClasses(topClasses)
         })

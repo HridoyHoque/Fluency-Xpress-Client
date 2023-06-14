@@ -24,7 +24,7 @@ const {user} = useContext(AuthContext)
        const newClass = {instructorName, email, image, name, price, seats, status, totalEnrolledStudents}
        console.log(newClass)
 
-       fetch('http://localhost:5000/newClasses',{
+       fetch('https://fluency-xpress-server.vercel.app/newClasses',{
         method: "POST",
         headers: {
             'content-type': 'application/json'
@@ -36,6 +36,7 @@ const {user} = useContext(AuthContext)
         console.log(data);
         if(data.insertedId){
             toast.success('Class added successfully')
+            form.reset()
           
         }
        })

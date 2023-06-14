@@ -2,19 +2,22 @@ import { useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import { BsCalendarDate } from 'react-icons/bs';
 import { useEffect } from "react";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const PaymentHistory = () => {
-
+   const {user} = useContext(AuthContext);
+   console.log(user?.email)
     const [paymentHistory, setPaymentHistory] = useState(null)
 
   useEffect(() => {
-    fetch('http://localhost:5000/payments')
+    fetch(`https://fluency-xpress-server.vercel.app/payments?email=${user.email}`)
     .then(res => res.json())
     .then(data => {
        const latestPayment = data.sort((a, b) => b.date - a.date)
         setPaymentHistory(latestPayment)
     })
-  },[])
+  },[user])
     return (
         <div className="w-full">
         <SectionTitle title="Your Payment History" />

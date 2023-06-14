@@ -12,7 +12,7 @@ const MyClasses = () => {
     const [myClasses, setMyClasses] = useState(null)
 
     useEffect(() => {
-        fetch(`http://localhost:5000/newClasses?email=${user.email}`)
+        fetch(`https://fluency-xpress-server.vercel.app/newClasses?email=${user.email}`)
             .then(res => res.json())
             .then(data => {
                 console.log(data);

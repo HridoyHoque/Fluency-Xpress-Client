@@ -7,10 +7,11 @@ const PopularInstructors = () => {
     const [popularInstructors, setPopularInstructors] = useState(null)
 
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://fluency-xpress-server.vercel.app/users')
             .then(res => res.json())
             .then(data => {
-                const topInstructors = data.slice(0, 6)
+                const instructors = data.filter(data => data?.role === 'instructor')
+                const topInstructors = instructors.slice(0, 6)
                 setPopularInstructors(topInstructors)
             })
     }, [])

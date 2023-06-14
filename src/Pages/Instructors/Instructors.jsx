@@ -8,12 +8,13 @@ const Instructors = () => {
 
     const [instructors, setInstructors] = useState(null);
     useEffect(() => {
-        fetch('http://localhost:5000/instructors')
+        fetch('https://fluency-xpress-server.vercel.app/users')
             .then(res => res.json())
             .then(data => {
-                setInstructors(data)
+                const instructors = data.filter(data => data?.role === 'instructor');
+                setInstructors(instructors)
             })
-    }, [])
+    }, [instructors])
     return (
         <>
             <div className="mt-4 mb-4 overflow-x-auto">

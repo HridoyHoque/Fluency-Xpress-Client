@@ -1,4 +1,4 @@
-import { FcReading } from 'react-icons/fc';
+import { SiMdbook } from 'react-icons/si';
 import { motion } from "framer-motion";
 
 const buttonVariants = {
@@ -9,7 +9,7 @@ const buttonVariants = {
 };
 const PopularInstructorsCard = ({ popularInstructor }) => {
 
-    const { name, image, students } = popularInstructor;
+    const { name, photo } = popularInstructor;
     return (
         <motion.div
         
@@ -19,8 +19,7 @@ const PopularInstructorsCard = ({ popularInstructor }) => {
             <div className="flex items-center mb-4">
                 <div className="flex-shrink-0">
                     <img
-                        src={image}
-                        alt={name}
+                        src={photo}
                         className="rounded-lg h-48 w-48 object-cover"
                     />
                 </div>
@@ -29,8 +28,8 @@ const PopularInstructorsCard = ({ popularInstructor }) => {
                 </div>
             </div>
             <div className="flex items-center">
-                <FcReading size={20} className="mr-2" />
-                <p>{students} students</p>
+                <SiMdbook size={22} className="mr-2" />
+                <p> Senior Instructor</p>
             </div>
         </motion.div>
     );
