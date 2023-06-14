@@ -1,10 +1,21 @@
 import { FcReading } from 'react-icons/fc';
+import { motion } from "framer-motion";
 
+const buttonVariants = {
+    hover: {
+        scale: 1.1,
+
+    },
+};
 const PopularInstructorsCard = ({ popularInstructor }) => {
 
     const { name, image, students } = popularInstructor;
     return (
-        <div className=" bg-white rounded-lg shadow-lg p-6 border border-gray-300">
+        <motion.div
+        
+        variants={buttonVariants}
+        whileHover="hover"
+        className=" bg-white rounded-lg shadow-lg p-6 border border-gray-300 hover:bg-gray-200 cursor-pointer">
             <div className="flex items-center mb-4">
                 <div className="flex-shrink-0">
                     <img
@@ -21,7 +32,7 @@ const PopularInstructorsCard = ({ popularInstructor }) => {
                 <FcReading size={20} className="mr-2" />
                 <p>{students} students</p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
